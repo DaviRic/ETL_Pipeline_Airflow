@@ -7,5 +7,5 @@ python3 -m venv nome_do_ambiente_virtual
 Certifique-se de ativar o ambiente virtual antes:
 
 ```bash
-source airflow_venv/bin/activate
+source venv nome_do_ambiente_virtual/bin/activate
 pip install -r requirements.txt
