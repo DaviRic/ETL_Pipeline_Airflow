@@ -15,11 +15,13 @@ def processed_fruit_excel(file_path, fruit_name):
         return None
     
     df = pd.read_excel(xls_file, sheet_name=sheet_name, skiprows=1)
-    df = df[~df.iloc[:, 0].astype(str).str.contains("USDA|Excludes|Includes|Source|Consumers|The", na=False)]
+    # Remove linhas que contêm palavras-chave em qualquer coluna
+    df = df[~df.astype(str).apply(lambda row: row.str.contains("USDA|Excludes|Includes|Source|Consumers|The", na=False, case=False)).any(axis=1)]
 
     # Identificando subtítulos e dividindo em duas partes
     subtitle_row = df[df.iloc[:, 0].astype(str).str.match(r"^[A-Za-z\s]+$", na=False)].index
-    if not subtitle_row.empty:
+    
+    if not subtitle_row.empty and subtitle_row[0] < len(df) - 1:
         df_products = df.iloc[:subtitle_row[0]].reset_index(drop=True)
         df_products.iloc[:, 0] = df_products.iloc[:, 0].apply(clean_name)
         # Renomeando colunas
@@ -45,7 +47,7 @@ def processed_fruit_excel(file_path, fruit_name):
         df_subtitle = None
 
     df_products["Category"] = "Product"
-    if df_subtitle is not None:
+    if df_subtitle is not None and not df_subtitle.empty:
         df_subtitle["Category"] = "Subcategory"
         df_final = pd.concat([df_products, df_subtitle], ignore_index=True)
     else:
