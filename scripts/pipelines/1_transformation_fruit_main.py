@@ -4,7 +4,7 @@ import re
 fruit_main_path = "data/raw/fruits/fruit-main"
 processed_path = "datasets"
 
-def clean_name(name):
+def clean_name(name):   
     return re.sub(r'\d+$', '', str(name)).strip()
 
 # Função que processa cada planilha dentro da pasta fruits
@@ -39,7 +39,11 @@ def processed_fruit_excel(file_path, fruit_name):
         ]
     else:
         df_products = df.copy()
-        df_products.iloc[:, 0] = df_products.iloc[:, 0].apply(clean_name)  # Corrigido aqui
+        df_products.iloc[:, 0] = df_products.iloc[:, 0].apply(clean_name)
+        df_products.columns = [
+            "Category", "Avg_Retail_price", "Unit", "Prep_Yield_Factor",
+            "Cup_Size", "Cup_Unit", "Avg_Price_Cup"
+        ]
         df_subtitle = None
 
     df_products["Category"] = "Product"
