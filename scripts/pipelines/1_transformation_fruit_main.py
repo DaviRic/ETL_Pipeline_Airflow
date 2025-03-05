@@ -2,9 +2,6 @@ import pandas as pd
 import re
 import os
 
-fruit_main_path = "data/raw/fruits/fruit-main"
-processed_path = "datasets"
-
 def clean_name(name):   
     return re.sub(r'\d+$', '', str(name)).strip()
 
