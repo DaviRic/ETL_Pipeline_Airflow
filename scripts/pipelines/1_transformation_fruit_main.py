@@ -18,7 +18,7 @@ def processed_fruit_excel(file_path, fruit_name):
         return None
     
     df = pd.read_excel(xls_file, sheet_name=sheet_name, skiprows=1)
-    df = df[~df.iloc[:, 0].astype(str).str.contains("USDA|Excludes|Includes|Source", na=False)]
+    df = df[~df.iloc[:, 0].astype(str).str.contains("USDA|Excludes|Includes|Source|Consumers|The", na=False)]
 
     # Identificando subtítulos e dividindo em duas partes
     subtitle_row = df[df.iloc[:, 0].astype(str).str.match(r"^[A-Za-z\s]+$", na=False)].index
@@ -85,8 +85,11 @@ def process_all_fruit_excels():
             for file in os.listdir(subfolder_path):
                 # Verifica se o arquivo termina com ".xlsx"
                 if file.endswith(".xlsx"):
+                    # Normaliza o nome do arquivo substituindo espaços e underscores por hífens
+                    normalized_file = file.replace("_", "-").replace(" ", "-").lower()
                     # Extrai o nome da fruta pelo nome do arquivo e coloca todas as letras em minúscula
-                    fruit_name = file.split("-")[0].lower()
+                    fruit_name = normalized_file.split("-")[0].lower()
+                    
                     # Crio uma string com o nome do caminho do arquivo ".xlsx" para passar ele por parâmetro na função
                     # "processed_fruit_excel"
                     file_path = os.path.join(subfolder_path, file)
