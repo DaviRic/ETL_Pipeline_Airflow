@@ -24,7 +24,7 @@ file_path = "datasets/consolidated_files/consolidated_food_main.xlsx"
 df_consolidado = pd.read_excel(file_path)
 
 # Função que insere os dados na tabela "food_info" do banco de dados food_db
-def inset_data_into_db(df):
+def insert_data_into_db(df):
     for index, row in df.iterrows():
         # Montando a query de inserção e aramazenando em insert_query
         insert_query = sql.SQL("""
@@ -53,3 +53,9 @@ def inset_data_into_db(df):
     
     # Commit para salvar as mudanças no banco de dados
     conn.commit()
+
+# Inserir os dados do dataframe na tabela
+insert_data_into_db(df_consolidado)
+
+cursor.close()
+conn.close()
