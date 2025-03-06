@@ -30,7 +30,7 @@ df_consolidado = pd.concat(df_list, ignore_index=True)
 df_consolidado = df_consolidado.dropna(subset=["Category"])
 
 # Salva o DataFrame consolidado em um único arquivo Excel
-output_file = "datasets/consolidated_vegetables.xlsx"
+output_file = "datasets/consolidated_files/consolidated_vegetables.xlsx"
 df_consolidado.to_excel(output_file, index=False)
 
 print(f"Arquivo consolidado salvo em: {output_file}")

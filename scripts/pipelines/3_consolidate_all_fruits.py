@@ -27,10 +27,10 @@ for subfolder in os.listdir(processed_fruit_path):
 df_consolidado = pd.concat(df_list, ignore_index=True)
 
 # Remove linhas onde a "Category" está vazia
-df_consolidado = df_consolidado.dropna(subset=["Category"])
+df_consolidado = df_consolidado.dropna(subset=["Avg_Retail_price"])
 
 # Salva o DataFrame consolidado em um único arquivo Excel
-output_file = "datasets/consolidated_fruits.xlsx"
+output_file = "datasets/consolidated_files/consolidated_fruits.xlsx"
 df_consolidado.to_excel(output_file, index=False)
 
 print(f"Arquivo consolidado salvo em: {output_file}")
