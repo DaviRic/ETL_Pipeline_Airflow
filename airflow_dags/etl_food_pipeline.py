@@ -27,7 +27,7 @@ def load_data_to_postgres():
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """, (
 
-            row["Category"], row["Avg_retail_price"], row["Unit"], row["Prep_Yield_Factor"],
+            row["Category"], row["Avg_Retail_price"], row["Unit"], row["Prep_Yield_Factor"],
             row["Cup_Size"], row["Cup_Unit"], row["Avg_Price_Cup"], row["food_type"] 
         ))
 
