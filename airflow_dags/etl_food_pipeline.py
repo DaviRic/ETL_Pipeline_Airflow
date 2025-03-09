@@ -6,7 +6,7 @@ import pandas as pd
 import psycopg2
 
 # Função para carregar os dados do excel e colocar no postgresql
-def load_data_to_postges():
+def load_data_to_postgres():
     # Conectar ao banco
     conn = psycopg2.connect(
         dbname = 'food_db',
@@ -25,11 +25,11 @@ def load_data_to_postges():
         cursor.execute("""
             INSERT INTO food_info (category, avg_retail_price, unit, prep_yield_factor, cup_size, cup_unit, avg_price_cup, food_type)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-            """,
+            """, (
 
-            row["category"], row["avg_retail_price"], row["unit"], row["prep_yield_factor"],
-            row["cup_size"], row["cup_unit"], row["avg_price_cup"], row["food_type"] 
-        )
+            row["Category"], row["Avg_retail_price"], row["Unit"], row["Prep_Yield_Factor"],
+            row["Cup_Size"], row["Cup_Unit"], row["Avg_Price_Cup"], row["food_type"] 
+        ))
 
     conn.commit()
     cursor.close()
@@ -43,7 +43,7 @@ default_args = {
 }
 
 dag_etl = DAG (
-    'elt_food_pipeline',
+    'etl_food_pipeline',
     default_args=default_args,
     description='Pipeline que para carregar dados de alimentos no PostgreSQL',
     schedule_interval='@daily',
@@ -51,8 +51,8 @@ dag_etl = DAG (
 )
 
 load_task = PythonOperator(
-    task_id = 'load_data_to_postges',
-    python_callable=load_data_to_postges,
+    task_id = 'load_data_to_postgres',
+    python_callable=load_data_to_postgres,
     dag=dag_etl
 )
 
