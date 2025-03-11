@@ -1,4 +1,4 @@
-# Pipeline ETL Completo com Apache Airflow e Python
+# ETL Pipeline com Apache Airflow e Python
 Este projeto implementa um pipeline de ETL (Extract, Transform, Load) utilizando Apache Airflow e Python para processar dados de frutas e vegetais de diferentes anos. Os dados são extraídos de planilhas, transformados e consolidados em arquivos organizados.
 
 ## 🎯 Objetivo
