@@ -68,8 +68,13 @@ graph TD;
   C --> E[Armazenamento dos Dados Tratados];
 ```
 
-## 📥Arquivos de Entrada
+## 📥 Arquivos de Entrada
 Os arquivos de entrada são planilhas Excel contendo dados de frutas e vegetais. Esses arquivos devem ser colocados no diretório datasets/raw_files/ antes de executar a DAG.
 
-## 📤Arquivos de Saída
+## 📤 Arquivos de Saída
 Os dados processados e consolidados são salvos no diretório datasets/processed_files/ e datasets/consolidated_files/ como arquivos Excel.
+
+## 🔮 Melhorias Futuras
+- Consolidar os dados dos anos anteriores (2013, 2016, 2020)
+- Criar dashboards para visualização dos dados processados
+- Implementar notificações no Airflow
