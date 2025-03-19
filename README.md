@@ -25,11 +25,11 @@ O objetivo desse projeto é automatizar o processo de transformação, consolida
 ├── 📁 cosolidated_files
 ├── 📁 processed_fruits
 ├── 📁 processed_vegetables
-📁 scripts/
-├── 📁 database/
-├── 📁 exploration/
-├── 📁 pipelines/
-├── 📁 processing/
+📁 scripts
+├── 📁 database
+├── 📁 exploration
+├── 📁 pipelines
+├── 📁 processing
 requirements.txt
 ```
 
