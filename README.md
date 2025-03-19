@@ -9,7 +9,7 @@ O objetivo desse projeto é automatizar o processo de transformação, consolida
 3. **Carregamento** dos dados no formato desejado para análise posterior.
 
 ## ⚙️ Arquitetura
-* **Pyhton** para processamento de dados;
+* **Python** para processamento de dados;
 * **Pandas** para a manipulação de dados em formato de planilhas Excel;
 * **Apache Airflow** para orquestração do pipeline ETL;
 * **PostgreSQL** para armazenamento dos dados transformados.
